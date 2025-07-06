@@ -2,7 +2,7 @@
 //kirim dari vs ke github
 git init
 git add .
-git commit -m "perbaiki banyak promise"
+git commit -m "perbaiki banyak sekali promise"
 git branch -M main
 git push -u origin main
 
