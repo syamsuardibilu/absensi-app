@@ -1,7 +1,7 @@
-const http = require('http');
-const fs = require('fs');
-const path = require('path');
-const { pool, testConnection } = require('./db');
+import http from 'http';
+import fs from 'fs';
+import path from 'path';
+import { testConnection } from './db.js';
 
 testConnection();
 

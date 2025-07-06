@@ -86,18 +86,21 @@ document.addEventListener("DOMContentLoaded", () => {
         const response = await fetch('/api/update-perner', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(updateData),
+          body: JSON.stringify({ data: updateData }),
         });
+        if (!response.ok) {
+          throw new Error("Gagal menghubungi server.");
+        }
         const result = await response.json();
-        if (result.success) {
+        if (result && result.success) {
           resultBox.textContent = "Data berhasil diupdate ke database.";
           validationStatus[targetId] = true;
         } else {
-          resultBox.textContent = "Error: " + (result.error || "Gagal update data.");
+          resultBox.textContent = "Error: " + (result && result.error ? result.error : "Gagal update data.");
           validationStatus[targetId] = false;
         }
       } catch (error) {
-        resultBox.textContent = "Error jaringan saat mengirim data.";
+        resultBox.textContent = "Terjadi error saat mengirim data: " + error.message;
         validationStatus[targetId] = false;
       }
       updateProcessButton();
