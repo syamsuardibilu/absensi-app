@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aplikasi Pengelola Absensi Pegawai</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>
+        <h1>Aplikasi Pengelola Absensi Pegawai</h1>
+        <p>Masukkan data sesuai format yang diperlukan</p>
+    </header>
+
+    <main class="container">
+        <div class="input-section">
+            <label>DATA PEGAWAI</label>
+            <textarea id="data-pegawai" rows="5"></textarea>
+            <div class="validation-area">
+                <button class="check-btn" data-target="data-pegawai">CEK</button>
+                <button class="delete-btn" data-target="data-pegawai">HAPUS</button>
+                <div class="result-box"></div>
+            </div>
+        </div>
+
+        <div class="input-section">
+            <label>DATA HARI LIBUR</label>
+            <textarea id="data-hari-libur" rows="5"></textarea>
+            <div class="validation-area">
+                <button class="check-btn" data-target="data-hari-libur">CEK</button>
+                <button class="delete-btn" data-target="data-hari-libur">HAPUS</button>
+                <div class="result-box"></div>
+            </div>
+        </div>
+
+        <div class="input-section">
+            <label>CI CO DAILY</label>
+            <textarea id="ci-co-daily" rows="5"></textarea>
+            <div class="validation-area">
+                <button class="check-btn" data-target="ci-co-daily">CEK</button>
+                <button class="delete-btn" data-target="ci-co-daily">HAPUS</button>
+                <div class="result-box"></div>
+            </div>
+        </div>
+
+        <div class="input-section">
+            <label>ATT ABS Daily</label>
+            <textarea id="att-abs-daily" rows="5"></textarea>
+            <div class="validation-area">
+                <button class="check-btn" data-target="att-abs-daily">CEK</button>
+                <button class="delete-btn" data-target="att-abs-daily">HAPUS</button>
+                <div class="result-box"></div>
+            </div>
+        </div>
+
+        <div class="input-section">
+            <label>ATT ABS</label>
+            <textarea id="att-abs" rows="5"></textarea>
+            <div class="validation-area">
+                <button class="check-btn" data-target="att-abs">CEK</button>
+                <button class="delete-btn" data-target="att-abs">HAPUS</button>
+                <div class="result-box"></div>
+            </div>
+        </div>
+
+        <div class="input-section">
+            <label>ATT SAP</label>
+            <textarea id="att-sap" rows="5"></textarea>
+            <div class="validation-area">
+                <button class="check-btn" data-target="att-sap">CEK</button>
+                <button class="delete-btn" data-target="att-sap">HAPUS</button>
+                <div class="result-box"></div>
+            </div>
+        </div>
+
+        <div class="input-section">
+            <label>SPPD UMUM</label>
+            <textarea id="sppd-umum" rows="5"></textarea>
+            <div class="validation-area">
+                <button class="check-btn" data-target="sppd-umum">CEK</button>
+                <button class="delete-btn" data-target="sppd-umum">HAPUS</button>
+                <div class="result-box"></div>
+            </div>
+        </div>
+
+        <div class="input-section">
+            <label>WORK SCHEDULE</label>
+            <textarea id="work-schedule" rows="5"></textarea>
+            <div class="validation-area">
+                <button class="check-btn" data-target="work-schedule">CEK</button>
+                <button class="delete-btn" data-target="work-schedule">HAPUS</button>
+                <div class="result-box"></div>
+            </div>
+        </div>
+
+        <div class="input-section">
+            <label>Substitution Daily</label>
+            <textarea id="substitution-daily" rows="5"></textarea>
+            <div class="validation-area">
+                <button class="check-btn" data-target="substitution-daily">CEK</button>
+                <button class="delete-btn" data-target="substitution-daily">HAPUS</button>
+                <div class="result-box"></div>
+            </div>
+        </div>
+
+        <div class="input-section">
+            <label>Substitution SAP</label>
+            <textarea id="substitution-sap" rows="5"></textarea>
+            <div class="validation-area">
+                <button class="check-btn" data-target="substitution-sap">CEK</button>
+                <button class="delete-btn" data-target="substitution-sap">HAPUS</button>
+                <div class="result-box"></div>
+            </div>
+        </div>
+
+        <button id="process-btn" disabled>PROSES DATA</button>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

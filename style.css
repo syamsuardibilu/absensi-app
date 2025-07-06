@@ -1,0 +1,104 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+header {
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.input-section {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    resize: none;
+}
+
+.validation-area {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 5px;
+}
+
+.validation-area button {
+    flex-shrink: 0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.check-btn {
+    background: #4CAF50;
+}
+
+.check-btn:hover {
+    background: #45a049;
+}
+
+.delete-btn {
+    background: #f44336;
+}
+
+.delete-btn:hover {
+    background: #d32f2f;
+}
+
+.result-box {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    flex-grow: 1;
+    min-height: 20px;
+}
+
+#process-btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    color: white;
+    background-color: #4a90e2;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#process-btn:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+}
+
+#process-btn:not(:disabled):hover {
+    background-color: #357ABD;
+}
