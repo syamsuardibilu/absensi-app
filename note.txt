@@ -2,7 +2,7 @@
 //kirim dari vs ke github
 git init
 git add .
-git commit -m "Perubahan kecil pada note"
+git commit -m "Perubahan pada note"
 git branch -M main
 git push -u origin main
 
