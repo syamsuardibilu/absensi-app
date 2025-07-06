@@ -2,7 +2,7 @@
 //kirim dari vs ke github
 git init
 git add .
-git commit -m "edit yang erro oleh copilot"
+git commit -m "edit perbaikan dari bbai terkait jalan diserver bukan di lokal"
 git branch -M main
 git push -u origin main
 
