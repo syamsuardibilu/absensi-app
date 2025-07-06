@@ -7,7 +7,7 @@ git branch -M main
 git push -u origin main
 
 
-//salin dari github ke blacbox ai
+//salin dari github ke blacbox ai atau dari github ke pc
 git pull origin main
 
 git config --global user.email "syamsuardi.b@gmail.com"
