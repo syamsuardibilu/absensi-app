@@ -1,5 +1,15 @@
+///perubahan
+//kirim dari vs ke github
 git init
 git add .
-git commit -m "Initial commit from PC"
+git commit -m "Perubahan kecil pada note"
 git branch -M main
 git push -u origin main
+
+
+//salin dari github ke blacbox ai
+git clone https://github.com/syamsuardibilu/absensi-app.
+git cloned-repo
+
+git config --global user.email "syamsuardi.b@gmail.com"
+git config --global user.name "syamsuardibilu"
