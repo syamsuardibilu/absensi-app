@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   checkButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", async () => {
       const targetId = btn.getAttribute("data-target");
       const textarea = document.getElementById(targetId);
       const resultBox = btn.parentElement.querySelector(".result-box");
@@ -20,9 +20,85 @@ document.addEventListener("DOMContentLoaded", () => {
       if (textarea.value.trim() === "") {
         resultBox.textContent = "Input tidak boleh kosong.";
         validationStatus[targetId] = false;
-      } else {
-        resultBox.textContent = "Input valid.";
-        validationStatus[targetId] = true;
+        updateProcessButton();
+        return;
+      }
+
+      // Validasi tanggal
+      const tanggalAwalStr = document.getElementById("tanggal-awal-pegawai").value;
+      const tanggalAkhirStr = document.getElementById("tanggal-akhir-pegawai").value;
+
+      function parseDate(dateStr) {
+        const parts = dateStr.split("/");
+        if (parts.length !== 3) return null;
+        const day = parseInt(parts[0], 10);
+        const month = parseInt(parts[1], 10) - 1;
+        const year = parseInt(parts[2], 10);
+        return new Date(year, month, day);
+      }
+
+      const tanggalAwal = parseDate(tanggalAwalStr);
+      const tanggalAkhir = parseDate(tanggalAkhirStr);
+
+      if (!tanggalAwal || !tanggalAkhir || tanggalAwal > tanggalAkhir) {
+        resultBox.textContent = "Tanggal tidak valid atau tanggal awal lebih besar dari tanggal akhir.";
+        validationStatus[targetId] = false;
+        updateProcessButton();
+        return;
+      }
+
+      // Validasi perner hanya angka
+      const perners = textarea.value
+        .split("\n")
+        .map(line => line.trim())
+        .filter(line => line.length > 0);
+
+      const invalidPerners = perners.filter(p => !/^\d+$/.test(p));
+      if (invalidPerners.length > 0) {
+        resultBox.textContent = "Perner hanya boleh berisi angka.";
+        validationStatus[targetId] = false;
+        updateProcessButton();
+        return;
+      }
+
+      // Generate data batch
+      function getDatesInRange(startDate, endDate) {
+        const dates = [];
+        let currentDate = new Date(startDate);
+        while (currentDate <= endDate) {
+          dates.push(new Date(currentDate));
+          currentDate.setDate(currentDate.getDate() + 1);
+        }
+        return dates;
+      }
+
+      const datesInRange = getDatesInRange(tanggalAwal, tanggalAkhir);
+
+      const updateData = [];
+      perners.forEach(perner => {
+        datesInRange.forEach(date => {
+          updateData.push({ perner, tanggal: date.toISOString().slice(0, 10) });
+        });
+      });
+
+      // Kirim data ke API
+      try {
+        const response = await fetch('/api/update-perner', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(updateData),
+        });
+        const result = await response.json();
+        if (result.success) {
+          resultBox.textContent = "Data berhasil diupdate ke database.";
+          validationStatus[targetId] = true;
+        } else {
+          resultBox.textContent = "Error: " + (result.error || "Gagal update data.");
+          validationStatus[targetId] = false;
+        }
+      } catch (error) {
+        resultBox.textContent = "Error jaringan saat mengirim data.";
+        validationStatus[targetId] = false;
       }
       updateProcessButton();
     });
